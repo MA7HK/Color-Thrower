@@ -1,1 +1,1 @@
-# Color-Thrower
+# Idle-Miner-Game
