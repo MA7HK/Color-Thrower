@@ -1,1 +1,0 @@
-# Idle-Miner-Game
