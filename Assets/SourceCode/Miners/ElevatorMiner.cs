@@ -28,10 +28,11 @@ public class ElevatorMiner : BaseMiner
 	}
 
     protected override void CollectGold() {
-        if (!_currentCollector.CanCollectGold() && _currentCollector != null) {
+        if (!_currentCollector.CanCollectGold() && _currentCollector != null
+				&& _currentShaftIndex == ShaftManager.Instance.Shafts.Count - 1) {
 			_currentShaftIndex = -1;
-			Vector3 elevatorCollectorPos = new Vector3(transform.position.x, 
-				elevator.collectorLocation.position.y);
+			ChangeGoal();
+			Vector3 elevatorCollectorPos = new Vector3(transform.position.x, elevator.collectorLocation.position.y);
 			MoveMiner(elevatorCollectorPos);
 			return;
 		}
@@ -43,15 +44,25 @@ public class ElevatorMiner : BaseMiner
 
     protected override IEnumerator IECollect(int collectGold, float colllectTime) {
 		yield return new WaitForSeconds(colllectTime);
-		CurrentGold = collectGold;
+		if (CurrentGold > 0 && CurrentGold < CollectCapacity) {
+			CurrentGold += collectGold;
+		}
+		else {
+			CurrentGold = collectGold;
+		}
+
 		_currentCollector.RemoveGold(collectGold);
 		yield return new WaitForSeconds(0.5f);
 
-		_currentShaftIndex = -1;
-		ChangeGoal();
-		Vector3 elevatorCollectorPos = new Vector3(transform.position.x, 
-				elevator.collectorLocation.position.y);
-		MoveMiner(elevatorCollectorPos);
+		if (CurrentGold == CollectCapacity || _currentShaftIndex == ShaftManager.Instance.Shafts.Count - 1) {
+			_currentShaftIndex = -1;
+			ChangeGoal();
+			Vector3 elevatorCollectorPos = new Vector3(transform.position.x, elevator.collectorLocation.position.y);
+			MoveMiner(elevatorCollectorPos);
+		}
+		else {
+			MoveToNextLocation();
+		}
     }
 
     protected override void CollectorGold() {

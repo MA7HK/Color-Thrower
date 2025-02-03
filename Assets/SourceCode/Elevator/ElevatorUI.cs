@@ -1,16 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class ElevatorUI : MonoBehaviour
 {
-	// Start is called before the first frame update
-	void Start()
-	{
+	[SerializeField] private TextMeshProUGUI elevatorCollectorGold;
+	private Elevator _elevator;
 
+	private void Start() {
+		_elevator = GetComponent<Elevator>();
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
+	private void Update() {
+		elevatorCollectorGold.text = _elevator.ElevatorCollector.currentGold.ToString();
 	}
 }

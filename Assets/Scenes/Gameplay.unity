@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bedf8ae9fbd61c409d5b158deed9846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elevatorCollectorGold: {fileID: 1379755206}
 --- !u!1 &393181948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8494327055279521969, guid: f4208cb8ca4d382438baed87522db982, type: 3}
@@ -657,8 +658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  goldCollectPerSecond: 50
-  InitialCollectCapacity: 200
+  goldCollectPerSecond: 2500
+  InitialCollectCapacity: 5000
   elevator: {fileID: 357782919}
 --- !u!1 &476052421
 GameObject:
