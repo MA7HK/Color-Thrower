@@ -42,8 +42,8 @@ public class ElevatorMiner : BaseMiner
 		StartCoroutine(IECollect(amountToCollect, collectTime));
     }
 
-    protected override IEnumerator IECollect(int collectGold, float colllectTime) {
-		yield return new WaitForSeconds(colllectTime);
+    protected override IEnumerator IECollect(int collectGold, float collectTime) {
+		yield return new WaitForSeconds(collectTime);
 		if (CurrentGold > 0 && CurrentGold < CollectCapacity) {
 			CurrentGold += collectGold;
 		}
@@ -77,8 +77,8 @@ public class ElevatorMiner : BaseMiner
 		StartCoroutine(IECollector(CurrentGold, collectorTime));
     }
 
-    protected override IEnumerator IECollector(int collectedGold, float colllectorTime) {
-		yield return new WaitForSeconds(colllectorTime);
+    protected override IEnumerator IECollector(int collectedGold, float collectorTime) {
+		yield return new WaitForSeconds(collectorTime);
 
 		elevator.ElevatorCollector.CollectorGold(CurrentGold);
 		CurrentGold = 0;

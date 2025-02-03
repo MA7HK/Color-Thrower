@@ -41,10 +41,10 @@ public class BaseMiner : MonoBehaviour
 
 	protected virtual void CollectGold() {}
 
-	protected virtual IEnumerator IECollect(int collectGold, float colllectTime) {
+	protected virtual IEnumerator IECollect(int collectGold, float collectTime) {
 		yield return null;
 	} 
-	protected virtual IEnumerator IECollector(int collectedGold, float colllectorTime) {
+	protected virtual IEnumerator IECollector(int collectedGold, float collectorTime) {
 		yield return null;
 	} 
 

@@ -21,8 +21,8 @@ public class ShaftMiner : BaseMiner
 		StartCoroutine(IECollect(CollectCapacity, collectTime));
     }
 
-    protected override IEnumerator IECollect(int collectGold, float colllectTime) {
-        yield return new WaitForSeconds(colllectTime);
+    protected override IEnumerator IECollect(int collectGold, float collectTime) {
+        yield return new WaitForSeconds(collectTime);
 
 		CurrentGold = collectGold;
 		ChangeGoal();
