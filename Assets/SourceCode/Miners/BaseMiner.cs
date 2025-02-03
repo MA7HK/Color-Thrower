@@ -8,6 +8,7 @@ public class BaseMiner : MonoBehaviour
 	[SerializeField] private float goldCollectPerSecond = 50.0f;
 	[SerializeField] private int InitialCollectCapacity = 200;
 
+	public float MoveSpeed { get; set; }
 	public int CurrentGold { get; set; }
 	public int CollectCapacity{ set; get; }
 	public float CollectPerSecond{ set; get; }
@@ -17,14 +18,16 @@ public class BaseMiner : MonoBehaviour
 
 	private void Awake() {
 		_animator = GetComponent<Animator>();
+
 		CurrentGold = 0;
+		MoveSpeed = moveSpeed;
 		IsTimeToCollect = true;
 		CollectCapacity = InitialCollectCapacity;
 		CollectPerSecond = goldCollectPerSecond;
 	}
 
 	public virtual void MoveMiner(Vector3 newPosition) {
-		transform.DOMove(newPosition, 10.0f / moveSpeed).OnComplete(
+		transform.DOMove(newPosition, 10.0f / MoveSpeed).OnComplete(
 			() => {
 				if(IsTimeToCollect) {
 					CollectGold();
@@ -39,6 +42,9 @@ public class BaseMiner : MonoBehaviour
 	protected virtual void CollectGold() {}
 
 	protected virtual IEnumerator IECollect(int collectGold, float colllectTime) {
+		yield return null;
+	} 
+	protected virtual IEnumerator IECollector(int collectedGold, float colllectorTime) {
 		yield return null;
 	} 
 

@@ -32,6 +32,7 @@ public class ShaftMiner : BaseMiner
 
     protected override void CollectorGold() {
 		//	Add Current glod to the Collector class
+		currentShaft.currentCollector.CollectorGold(CurrentGold);
 		//	update some values
 		CurrentGold = 0;
 		ChangeGoal();
