@@ -75,3 +75,4 @@ crashlytics-build.properties
 #   Custom Editor Only
 /[Aa]ssets/[Ee]ditor/CreateScript.cs
 /[Aa]ssets/[Ee]ditor/CreateScript.cs.meta
+/[Aa]ssets/[Pp]ulgins/
