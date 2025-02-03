@@ -18,6 +18,9 @@
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
+#   Custom Editor Only
+/[Aa]ssets/[Pp]lugins/Infinity Code/
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 
@@ -75,4 +78,3 @@ crashlytics-build.properties
 #   Custom Editor Only
 /[Aa]ssets/[Ee]ditor/CreateScript.cs
 /[Aa]ssets/[Ee]ditor/CreateScript.cs.meta
-/[Aa]ssets/[Pp]ulgins/

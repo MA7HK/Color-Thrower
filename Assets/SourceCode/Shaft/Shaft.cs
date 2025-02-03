@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using InfinityCode.UltimateEditorEnhancer;
 using Unity.Mathematics;
 using UnityEngine;
 
