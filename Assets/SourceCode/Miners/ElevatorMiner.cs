@@ -6,6 +6,8 @@ using UnityEngine;
 public class ElevatorMiner : BaseMiner
 {
 	[SerializeField] private Elevator elevator;
+	[SerializeField] private float collectTime;
+	[SerializeField] private float collectorTime;
 
 	private int _currentShaftIndex = -1;
 	private Collector _currentCollector;
@@ -38,7 +40,8 @@ public class ElevatorMiner : BaseMiner
 		}
 
 		int amountToCollect = _currentCollector.CollectorGold(this);
-		float collectTime = amountToCollect / CollectPerSecond;
+		collectTime = amountToCollect / CollectPerSecond;
+		OnLoading?.Invoke(this, collectTime);
 		StartCoroutine(IECollect(amountToCollect, collectTime));
     }
 
@@ -73,7 +76,8 @@ public class ElevatorMiner : BaseMiner
 			return;
 		}
 
-		float collectorTime = CurrentGold /CollectPerSecond;
+		collectorTime = CurrentGold /CollectPerSecond;
+		OnLoading?.Invoke(this, collectorTime);
 		StartCoroutine(IECollector(CurrentGold, collectorTime));
     }
 

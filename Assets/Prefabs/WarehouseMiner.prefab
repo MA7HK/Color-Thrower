@@ -260,6 +260,37 @@ Transform:
   - {fileID: 3519338296039637300}
   m_Father: {fileID: 379571220071847347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4554731093308958995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8924306265337205410}
+  m_Layer: 0
+  m_Name: BarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8924306265337205410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4554731093308958995}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.35, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 379571220071847347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5084065286572950837
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +844,7 @@ GameObject:
   - component: {fileID: 8485387251017859129}
   - component: {fileID: 7918386575294767069}
   - component: {fileID: 7113917651953954703}
+  - component: {fileID: 2873414923675515656}
   m_Layer: 0
   m_Name: WarehouseMiner
   m_TagString: Untagged
@@ -834,6 +866,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4665244641985162247}
+  - {fileID: 8924306265337205410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2769897994138940080
@@ -963,6 +996,20 @@ MonoBehaviour:
   moveSpeed: 5
   goldCollectPerSecond: 50
   InitialCollectCapacity: 200
+--- !u!114 &2873414923675515656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121582344945910790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d1e70b9c4ddac40bd5bedd1eaae545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBarPrefabs: {fileID: 9030307808449744272, guid: 4e10a368f82c15e4cb2dd016290cfd7e, type: 3}
+  loadingBarPosition: {fileID: 8924306265337205410}
 --- !u!1 &8439048872382623535
 GameObject:
   m_ObjectHideFlags: 0

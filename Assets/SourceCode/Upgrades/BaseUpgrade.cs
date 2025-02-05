@@ -12,10 +12,15 @@ public class BaseUpgrade : MonoBehaviour
 
 	[Header("Cost")]
 	[SerializeField] private float InitialUpgradeCost = 200.0f;
-	[SerializeField] private float upgradesCostMultiplier = 2.0f;
+	[SerializeField] private float upgradeCostMultiplier = 2.0f;
 
 	public int CurrentLevel { get; set; }
 	public float UpgradeCost { get; set; }
+
+	public float CollectCapacityMultiplier => collectCapacityMultiplier;
+	public float CollectPerSecondMultiplier => collectPerSecondMultiplier;
+	public float MoveSpeedMultiplier => moveSpeedMultiplier;
+	public float UpgradeCostMultiplier => upgradeCostMultiplier;
 
 	protected Shaft _shaft;
 
@@ -44,7 +49,7 @@ public class BaseUpgrade : MonoBehaviour
 
 	protected virtual void UpdateUpgradeValues() { 
 		/* Update Values */
-		UpgradeCost *= upgradesCostMultiplier;
+		UpgradeCost *= upgradeCostMultiplier;
 	}
 	protected virtual void RunUpgrade() { /* Update Logic */ }
 

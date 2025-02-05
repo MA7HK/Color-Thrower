@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShaftUI : MonoBehaviour
 {
+	public static Action<Shaft, ShaftUpgrade> OnUpgradeRequest;
+
 	[Header("Buttons")]
 	[SerializeField] private GameObject buyNewShaftButton;
 
@@ -29,6 +31,10 @@ public class ShaftUI : MonoBehaviour
 			ShaftManager.Instance.AddShaft();
 			buyNewShaftButton.SetActive(false);
 		}
+	}
+
+	public void UpgradeRequest() {
+		OnUpgradeRequest.Invoke(_shaft, _shaftUpgrade);
 	}
 
     private void UpgradeShaft(BaseUpgrade upgrade, int currentLvl) {

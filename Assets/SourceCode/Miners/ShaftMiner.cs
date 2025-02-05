@@ -18,6 +18,7 @@ public class ShaftMiner : BaseMiner
         base.CollectGold();
 		float collectTime = CollectCapacity / CollectPerSecond;
 		_animator.SetTrigger(miningAnimationPatameter);
+		OnLoading?.Invoke(this, collectTime);
 		StartCoroutine(IECollect(CollectCapacity, collectTime));
     }
 

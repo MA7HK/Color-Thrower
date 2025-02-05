@@ -18,6 +18,8 @@ public class Shaft : MonoBehaviour
 	public List<ShaftMiner> Miners => _miners;
 	public Collector currentCollector { get; set; }
 
+	public int ShaftId { get; set; }
+
 	private GameObject _minerContainer;
 	private List<ShaftMiner> _miners;
 
