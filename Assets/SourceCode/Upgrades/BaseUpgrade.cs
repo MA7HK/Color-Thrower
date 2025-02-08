@@ -21,13 +21,16 @@ public class BaseUpgrade : MonoBehaviour
 	public float CollectPerSecondMultiplier => collectPerSecondMultiplier;
 	public float MoveSpeedMultiplier => moveSpeedMultiplier;
 	public float UpgradeCostMultiplier => upgradeCostMultiplier;
+	public Elevator Elevator => _elevator;
 
 	protected Shaft _shaft;
 	protected Elevator _elevator;
+	protected Warehouse _warehouse;
 
 	private void Start() {
 		_shaft = GetComponent<Shaft>();
 		_elevator = GetComponent<Elevator>();
+		_warehouse = GetComponent<Warehouse>();
 
 		CurrentLevel = 1;
 		UpgradeCost = InitialUpgradeCost;

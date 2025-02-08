@@ -14,6 +14,8 @@ public class Warehouse : MonoBehaviour
 	[SerializeField] private Transform warehouseCollectorLocation;
 	[SerializeField] private List<WarehouseMiner> miners;
 
+	public List<WarehouseMiner> Miners => miners;
+
 	private void Start() {
 		miners = new List<WarehouseMiner>();
 		AddMiner();

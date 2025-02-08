@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f0baf27ec13d14a8bc7aa268bbff7d, type: 3}
+  m_Name: DotManager
+  m_EditorClassIdentifier: 
+  managerLevel: 1
+  levelColor: {r: 0.90800005, g: 0.27694002, b: 0.66728663, a: 1}
+  managerIcon: {fileID: 7093809808025567071, guid: 1b381d077a7bb4e4f9360e1a506d069d, type: 3}
+  managerName: Dot
+  boosttype: 0
+  boostIcon: {fileID: -1772244045117237821, guid: 9d52fbfaea94ddf4fab176a8be2612dd, type: 3}
+  boostDuration: 6
+  boostValue: 5
+  boostDescription: x5 Increased movement speed.
