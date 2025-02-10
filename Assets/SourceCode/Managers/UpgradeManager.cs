@@ -103,22 +103,22 @@ public class UpgradeManager : MonoBehaviour
 	public void Upgrade_x1() {
 		ActivateButton(0);
 		TimesToUpgrade = 1;
-		upgradeCost.text = $"{_currentUpgrade.UpgradeCost}";
+		upgradeCost.text = Currency.DisplayCurrency((int)_currentUpgrade.UpgradeCost);
 	}
 	public void Upgrade_x10() {
 		ActivateButton(1);
 		TimesToUpgrade = CanUpgradeManyTimes(10, _currentUpgrade) ? 10 : 0;
-		upgradeCost.text = GetUpgradeCost(10, _currentUpgrade).ToString();
+		upgradeCost.text = Currency.DisplayCurrency(GetUpgradeCost(10, _currentUpgrade));
 	}
 	public void Upgrade_x50() {
 		ActivateButton(2);
 		TimesToUpgrade = CanUpgradeManyTimes(50, _currentUpgrade) ? 50 : 0;
-		upgradeCost.text = GetUpgradeCost(50, _currentUpgrade).ToString();
+		upgradeCost.text = Currency.DisplayCurrency(GetUpgradeCost(50, _currentUpgrade));
 	}
 	public void Upgrade_Max() {
 		ActivateButton(3);
 		TimesToUpgrade = CalculateUpgradeCount(_currentUpgrade);
-		upgradeCost.text = GetUpgradeCost(TimesToUpgrade, _currentUpgrade).ToString();
+		upgradeCost.text = Currency.DisplayCurrency(GetUpgradeCost(TimesToUpgrade, _currentUpgrade));
 	}
 
 	public void ActivateButton(int buttonIndex) {
@@ -166,7 +166,8 @@ public class UpgradeManager : MonoBehaviour
 
 	private void UpdateUpgradePanel(BaseUpgrade upgrade) {
 		panelTitle.text = $"Mine Shaft {_selectedShaft.ShaftId + 1} Level {upgrade.CurrentLevel}"; 
-		upgradeCost.text = $"{upgrade.UpgradeCost}";
+
+		upgradeCost.text = Currency.DisplayCurrency((int)upgrade.UpgradeCost);
 		currentStat1.text = $"{_selectedShaft.Miners.Count}";
 		currentStat2.text = $"{_selectedShaft.Miners[0].MoveSpeed}";
 		currentStat3.text = $"{_selectedShaft.Miners[0].CollectPerSecond}";
@@ -223,6 +224,7 @@ public class UpgradeManager : MonoBehaviour
 	private void UpdateElevatorPanel(BaseUpgrade upgrade) {
 		ElevatorMiner miner = upgrade.Elevator.Miner;
 		panelTitle.text = $"Elevator Level {upgrade.CurrentLevel}";
+		upgradeCost.text = Currency.DisplayCurrency((int)upgrade.UpgradeCost);
 
 		stats[3].SetActive(false);
 		panelIcon.sprite = elevatorMinerIcon;
@@ -268,7 +270,7 @@ public class UpgradeManager : MonoBehaviour
 
 	private void UpdateWarehousePanel(BaseUpgrade upgrade) {
 		panelTitle.text = $"Warehouse Level {upgrade.CurrentLevel}";
-		upgradeCost.text = $"{upgrade.UpgradeCost}";
+		upgradeCost.text = Currency.DisplayCurrency((int)upgrade.UpgradeCost);
 
 		//	update Icon
 		stat1Icon.sprite = warehouseMinerIcon;

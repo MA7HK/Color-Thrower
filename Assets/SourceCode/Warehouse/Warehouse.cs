@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -29,5 +30,32 @@ public class Warehouse : MonoBehaviour
 		miner.WarehouseLocation = warehouseCollectorLocation;
 
 		miners.Add(miner);
+	}
+
+    private void WarehouseMinerBoost(WarehouseManagerLocation warehouseManager) {
+		switch (warehouseManager.Manager.boostType) {
+			case BoostType.Movement:
+				foreach (var miner in Miners) {
+					ManagersController.Instance.RunMovementBoost(miner,
+					warehouseManager.Manager.boostDuration, 
+					warehouseManager.Manager.boostValue);
+				}
+				break;
+			case BoostType.Loading:
+			foreach (var miner in Miners) {
+					ManagersController.Instance.RunLoadingBoost(miner,
+					warehouseManager.Manager.boostDuration, 
+					warehouseManager.Manager.boostValue);
+				}
+				break;
+		}
+    }
+
+	private void OnEnable() {
+		WarehouseManagerLocation.OnBoost += WarehouseMinerBoost;
+	}
+
+    private void OnDisable() {
+		WarehouseManagerLocation.OnBoost -= WarehouseMinerBoost;
 	}
 }

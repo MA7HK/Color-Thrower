@@ -16,7 +16,11 @@ public class ElevatorUI : MonoBehaviour
 	}
 
 	private void Update() {
-		elevatorCollectorGold.text = _elevator.ElevatorCollector.currentGold.ToString();
+		if (_elevator.ElevatorCollector.currentGold > 0) {
+			elevatorCollectorGold.text = Currency.DisplayCurrency(_elevator.ElevatorCollector.currentGold);
+		}
+		else { elevatorCollectorGold.text = $"0"; }
+		
 	}
 
 	public void RequestUpgrade() {

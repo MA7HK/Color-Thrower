@@ -801,6 +801,7 @@ MonoBehaviour:
   managerLevel: {fileID: 4174843185228390483}
   boostEffect: {fileID: 8808369716356324257}
   boostDescription: {fileID: 6472742004204070169}
+  ManagerLocation: {fileID: 0}
 --- !u!1 &6695238070184310928
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +951,7 @@ GameObject:
   - component: {fileID: 1384909007783409237}
   - component: {fileID: 4359719646655475538}
   m_Layer: 5
-  m_Name: Unassign - Button
+  m_Name: AssignManager - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,4 +1058,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1384909007783409237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9158985035210515144}
+        m_TargetAssemblyTypeName: ManagerCard, Assembly-CSharp
+        m_MethodName: AssignManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

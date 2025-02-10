@@ -22,7 +22,9 @@ public class ShaftUI : MonoBehaviour
 	}
 
 	private void Update() {
-		currentGoldTMP.text = _shaft.currentCollector.currentGold.ToString();
+		if (_shaft.currentCollector.currentGold > 0) {
+			currentGoldTMP.text = Currency.DisplayCurrency(_shaft.currentCollector.currentGold);
+		} else { currentGoldTMP.text = $"0"; }
 	}
 
 	public void BuyNewShaft() {

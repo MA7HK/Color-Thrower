@@ -7,7 +7,7 @@ public class GoldManager : Singleton<GoldManager>
 	private readonly string GOLD_KEY = "goldkey";
 
 	private void Start() {
-		PlayerPrefs.DeleteAll();
+		//PlayerPrefs.DeleteAll();
 		LoadGold();
 	}
 

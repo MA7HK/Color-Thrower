@@ -21,7 +21,7 @@ public class Manager : ScriptableObject
 	public string managerName;
 
 	[Header("Boost Info")]
-	public BoostType boosttype;
+	public BoostType boostType;
 	public Sprite boostIcon;
 	public float boostDuration;
 	public float boostValue;

@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 3718441570137670486}
   - component: {fileID: 7941895364236746016}
   - component: {fileID: 1958275919900016914}
+  - component: {fileID: 3832200633144638833}
   m_Layer: 0
   m_Name: Shaft
   m_TagString: Untagged
@@ -446,6 +447,7 @@ Transform:
   - {fileID: 275704917364133456}
   - {fileID: 6317497984499824025}
   - {fileID: 7080642295894829067}
+  - {fileID: 5715016730929258101}
   - {fileID: 6701977524194489367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -521,6 +523,8 @@ MonoBehaviour:
   miningLocation: {fileID: 275704917364133456}
   collectorLocation: {fileID: 6317497984499824025}
   collectorInstantiationPosition: {fileID: 7080642295894829067}
+  managerPos: {fileID: 5715016730929258101}
+  managerPrefab: {fileID: 7638183209790170655, guid: 69e6350f8b5406e4facfeb6ca0a15d9c, type: 3}
 --- !u!114 &7941895364236746016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +556,21 @@ MonoBehaviour:
   collectPerSecondMultiplier: 2
   moveSpeedMultiplier: 1.25
   InitialUpgradeCost: 200
-  upgradesCostMultiplier: 2
+  upgradeCostMultiplier: 2
+--- !u!114 &3832200633144638833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993683539982617097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0cdffa31b286545b2555ff602e116b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationTitle: Shaft Manager
+  managerBoostIcon: {fileID: 0}
 --- !u!1 &3046883805352008507
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +902,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5245040879241010804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5715016730929258101}
+  m_Layer: 0
+  m_Name: ShaftManagerLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5715016730929258101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245040879241010804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2881600313633798735}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7486234578084895831
 GameObject:
   m_ObjectHideFlags: 0

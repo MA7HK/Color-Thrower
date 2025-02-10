@@ -10,13 +10,19 @@ public class WarehouseMiner : BaseMiner
 	private readonly int _walkingNoGold = Animator.StringToHash("WalkingNoGold");
 	private readonly int _walkingWithGold = Animator.StringToHash("WalkingWithGold");
 
-	private void Update() {
-		if (Input.GetKeyDown(KeyCode.P)) {
+	private void Start(){
 			RotateMiner(-1);
 			_animator.SetBool(_walkingNoGold, true);
 			MoveMiner(new Vector2(ElevatorCollectorLocation.position.x, transform.position.y));
-		}
 	}
+
+	// private void Update() {
+	// 	if (Input.GetKeyDown(KeyCode.P)) {
+	// 		RotateMiner(-1);
+	// 		_animator.SetBool(_walkingNoGold, true);
+	// 		MoveMiner(new Vector2(ElevatorCollectorLocation.position.x, transform.position.y));
+	// 	}
+	// }
 
     protected override void CollectGold() {
         if (ElevatorCollector.currentGold <= 0) {

@@ -15,7 +15,10 @@ public class WarehouseUI : MonoBehaviour
 	}
 
 	private void Update() {
-		globalGoldTMP.text = GoldManager.Instance.CurrentGold.ToString();
+		if (GoldManager.Instance.CurrentGold > 0) {
+			globalGoldTMP.text = Currency.DisplayCurrency(GoldManager.Instance.CurrentGold);
+		} else { globalGoldTMP.text = $"0"; }
+		
 	}
 
 	public void UpgradeRequest() {

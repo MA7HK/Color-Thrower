@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class Shaft : MonoBehaviour
 	[SerializeField] private Transform collectorLocation;
 	[SerializeField] private Transform collectorInstantiationPosition;
 
+	[Header("Manager")]
+	[SerializeField] private Transform managerPos;
+	[SerializeField] private GameObject managerPrefab;
+
 	public Transform MiningLocation => miningLocation;
 	public Transform CollectorLocation => collectorLocation;
 	public List<ShaftMiner> Miners => _miners;
@@ -22,10 +27,12 @@ public class Shaft : MonoBehaviour
 
 	private GameObject _minerContainer;
 	private List<ShaftMiner> _miners;
+	private ShaftManagerLocation _shaftManagerLocation;
 
 	private void Start() {
-		_miners = new List<ShaftMiner>();
 		_minerContainer = new GameObject("Miners");
+		_miners = new List<ShaftMiner>();
+		_shaftManagerLocation = GetComponent<ShaftManagerLocation>();
 		CreateMiner();
 		CreateCollector();
 	}
@@ -46,8 +53,42 @@ public class Shaft : MonoBehaviour
 		_miners.Add(newMiner);
 	}
 
+	public void CreateManager() {
+		GameObject shaftManager = Instantiate(managerPrefab, managerPos.position, quaternion.identity);
+		var mineManager = shaftManager.GetComponent<MineManager>();
+		mineManager.Setupmanager(_shaftManagerLocation);
+		_shaftManagerLocation.MineManager = mineManager;
+	}
+
 	private void CreateCollector() {
 		currentCollector = Instantiate(CollectorPrefab, collectorInstantiationPosition.position, Quaternion.identity);
 		currentCollector.transform.SetParent(collectorInstantiationPosition);
+	}
+
+    private void ShaftBoost(Shaft shaft, ShaftManagerLocation shaftManager) {
+		if (shaft == this) {
+			switch (shaftManager.Manager.boostType) {
+				case BoostType.Movement:
+					foreach (var miner in _miners) {
+						ManagersController.Instance.RunMovementBoost(miner,
+						shaftManager.Manager.boostDuration, shaftManager.Manager.boostValue);
+					}
+					break;
+				case BoostType.Loading:
+					foreach (var miner in _miners) {
+						ManagersController.Instance.RunLoadingBoost(miner,
+						shaftManager.Manager.boostDuration, shaftManager.Manager.boostValue);
+					}
+					break;
+			}
+		}
+    }
+
+	private void OnEnable() {
+		ShaftManagerLocation.OnBoost += ShaftBoost;
+	}
+
+    private void OnDisable() {
+		ShaftManagerLocation.OnBoost += ShaftBoost;
 	}
 }

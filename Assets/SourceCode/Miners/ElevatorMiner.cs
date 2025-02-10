@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
@@ -12,11 +13,15 @@ public class ElevatorMiner : BaseMiner
 	private int _currentShaftIndex = -1;
 	private Collector _currentCollector;
 
-	private void Update() {
-		if (Input.GetKeyDown(KeyCode.N)) {
-			MoveToNextLocation();
-		}
+	private void Start() {
+		MoveToNextLocation();
 	}
+
+	// private void Update() {
+	// 	if (Input.GetKeyDown(KeyCode.N)) {
+	// 		MoveToNextLocation();
+	// 	}
+	// }
 
 	public void MoveToNextLocation() {
 		_currentShaftIndex++; // 0
@@ -91,6 +96,30 @@ public class ElevatorMiner : BaseMiner
 		//	update goal and move to next location
 		ChangeGoal();
 		MoveToNextLocation();
+	}
+
+    private void ElevatorBoost(ElevatorManagerLocation elevatorManager) {
+		switch (elevatorManager.Manager.boostType)
+		{
+			case BoostType.Movement:
+				ManagersController.Instance.RunMovementBoost(this,
+				elevatorManager.Manager.boostDuration,
+				elevatorManager.Manager.boostValue);
+				break;
+			case BoostType.Loading:
+				ManagersController.Instance.RunLoadingBoost(this,
+				elevatorManager.Manager.boostDuration,
+				elevatorManager.Manager.boostValue);
+				break;
+		}
     }
+
+	private void OnEnable() {
+		ElevatorManagerLocation.OnBoost += ElevatorBoost;
+	}
+
+    private void OnDisable() {
+		ElevatorManagerLocation.OnBoost -= ElevatorBoost;
+	}
 
 }
